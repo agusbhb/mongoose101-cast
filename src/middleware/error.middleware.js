@@ -6,13 +6,13 @@ const errorHandler = (err, req, res, next) => {
     
     if (err.name === 'ValidationError') {
         return res.status(400).json({ 
-            error: 'Balioztatze errorea',
+            error: 'Error de validación',
             details: err.message 
         });
     }
 
     res.status(500).json({ 
-        error: 'Zerbitzari errorea',
+        error: 'Error de servidor',
         message: err.message 
     });
 };

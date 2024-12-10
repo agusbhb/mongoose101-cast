@@ -4,50 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Ikasleak API</title>
+    <title>Test API Estudiantes</title>
     <script>
-        async function fetchIkasleak() {
-            const response = await fetch('/api/ikasleak');
+        async function fetchEstudiantes() {
+            const response = await fetch('/api/estudiantes');
             const data = await response.json();
-            document.getElementById('ikasleak').innerText = JSON.stringify(data, null, 2);
+            document.getElementById('estudiantes').innerText = JSON.stringify(data, null, 2);
         }
 
-        async function createIkasle() {
-            const izena = document.getElementById('izena').value;
-            const adina = document.getElementById('adina').value;
+        async function createEstudiante() {
+            const nombre = document.getElementById('nombre').value;
+            const edad = document.getElementById('edad').value;
             const email = document.getElementById('email').value;
 
-            const response = await fetch('/api/ikasleak', {
+            const response = await fetch('/api/estudiantes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ izena, adina, email })
+                body: JSON.stringify({ nombre, edad, email })
             });
 
             const data = await response.json();
-            document.getElementById('newIkasle').innerText = JSON.stringify(data, null, 2);
+            document.getElementById('newEstudiante').innerText = JSON.stringify(data, null, 2);
         }
     </script>
 </head>
 <body>
-    <h1>Test Ikasleak API</h1>
-    <button onclick="fetchIkasleak()">Get Ikasleak</button>
-    <pre id="ikasleak"></pre>
+    <h1>Test API Estudiantes</h1>
+    <button onclick="fetchEstudiantes()">Get Estudiantes</button>
+    <pre id="estudiantes"></pre>
 
-    <h2>Create Ikasle</h2>
-    <form onsubmit="event.preventDefault(); createIkasle();">
-        <label for="izena">Izena:</label>
-        <input type="text" id="izena" name="izena" required>
+    <h2>Create Estudiante</h2>
+    <form onsubmit="event.preventDefault(); createEstudiante();">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
         <br>
-        <label for="adina">Adina:</label>
-        <input type="number" id="adina" name="adina" required>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required>
         <br>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
         <br>
         <button type="submit">Create</button>
     </form>
-    <pre id="newIkasle"></pre>
+    <pre id="newEstudiante"></pre>
 </body>
 </html>

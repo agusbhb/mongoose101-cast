@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/niredb');
-        console.log('MongoDB konektatuta');
+        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mibd');
+        console.log('MongoDB conectado');
     } catch (error) {
-        console.error('MongoDB konexio errorea:', error);
+        console.error('Error en la conexión a MongoDB:', error);
         process.exit(1);
     }
 };
