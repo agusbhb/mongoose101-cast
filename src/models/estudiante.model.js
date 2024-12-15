@@ -25,5 +25,8 @@ estudianteSchema.pre('save', function(next) {
     this.nombre = this.nombre.charAt(0).toUpperCase() + this.nombre.slice(1);
     next();
 });
+estudianteSchema.path('email').validate(function(email) {
+        return email.includes('@'); },
+    'El email debe tener @');
 
 module.exports = mongoose.model('Estudiante', estudianteSchema);

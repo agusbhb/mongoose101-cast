@@ -1,11 +1,13 @@
 // Configuración de .env
 require('dotenv').config();
 
+
 const path = require('path');
 const express = require('express');
 const connectDB = require('./config/database');
 const estudianteRoutes = require('./routes/estudiante.routes');
 const errorHandler = require('./middleware/error.middleware');
+const grupoRoutes = require('./routes/grupo.routes');
 
 const app = express();
 
@@ -24,6 +26,10 @@ app.use(express.static('public'));
 
 // Rutas
 app.use('/api/estudiantes', estudianteRoutes);
+
+//Grupos
+app.use('/api/grupos', grupoRoutes);
+
 
 app.get('/', (req, res) => {
     res.render('index');
